@@ -28,11 +28,10 @@ const Register = (props) => {
     name: "",
     address: "",
     dob: "",
-    gender: "",
     email: "",
-    mobile: "",
     password: "",
-    gender: "",
+    mobile: "",
+    gender: "",    
     qualification: "",
     experience: "",
     role: "User",
@@ -73,13 +72,13 @@ const Register = (props) => {
   return (
     <React.Fragment>
       <div className="flex">
-        <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
-          <div className="max-w-md text-center"></div>
-        </div>
-        <div className="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
+        {/* <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
+          <div className=""><img src="https://img.etimg.com/thumb/width-1600,height-900,imgsize-507557,resizemode-75,msid-84398720/jobs/covid-19-impact-investigators-find-sudden-spurt-in-job-related-frauds-due-to-wfh.jpg" className="absolute float-left" /></div>
+        </div> */}
+        <div className="w-full bg-gray-100 flex items-center justify-center">
           <div className="max-w-md w-full p-6">
             <h1 className="text-3xl font-semibold mb-6 text-black text-center">
-              Sign Up for Job Seeker
+              Sign Up
             </h1>
             <h1 className="text-sm font-semibold mb-6 text-gray-500 text-center">
               Join to Our Community with all time access and free{" "}
@@ -98,10 +97,9 @@ const Register = (props) => {
                   .required("Address is a required field"),
                 dob: Yup.date()
                   .required("Date of birth is a required field"),
-                gender: Yup.string().required("Gender Required"),
                 email: Yup.string()
                   .email("Invalid email address")
-                  .required("Email is a required field"),
+                  .required("Email is a required field"),                
                 password: Yup.string()
                   .min(6, "Password must be minimum 6 characters")
                   .required("Password is a required field"),
@@ -110,6 +108,7 @@ const Register = (props) => {
                   .matches(/^[0-9]+$/, "Must be only digits")
                   .min(10, "Must be exactly 10 digits")
                   .max(10, "Must be exactly 10 digits"),
+                gender: Yup.string().required("Gender Required"),
                 qualification: Yup.string().required("Qualification Required"),
                 experience: Yup.string(),
                 role: Yup.string(),

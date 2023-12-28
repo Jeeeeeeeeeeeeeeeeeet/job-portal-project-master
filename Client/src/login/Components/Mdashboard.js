@@ -27,6 +27,7 @@ function Mdashboard() {
   }
   return (
     <>
+      <Nav />
       <Login />
     </>
   );

@@ -7,14 +7,16 @@ import Blank from "./components/Blank";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import Home from "./login/Components/Home";
+import Navigation from "./components/navigation/Navigation";
 
 function App() {
 
   return (
     <>
-    <Nav />
+    
+    
     <Routes>
-      <Route path="/*" element={<Home />} />
+      <Route path="/*" element={<Mdashboard />} />
       <Route path="/blank" element={<Blank />} />
       <Route path="/Login" element={<Mdashboard />} />
 

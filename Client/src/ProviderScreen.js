@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense } from "react";
 import SpinnerComponent from "./components/UI/SpinnerComponent";
 import Layout from "./components/layout/Layout";
+import { Nav } from "react-bootstrap";
 // import ProvDashboard from "./pages/ProviderPages/ProvDashboard";
 // import ApplicantsPage from "./pages/ProviderPages/ApplicantPage";
 
@@ -33,6 +34,7 @@ const ManageJobsPage = React.lazy(() =>
 export default function ProviderScreen() {
   return (
     <Layout>
+      
       <Suspense fallback={<SpinnerComponent />}>
         <Routes>
           <Route

@@ -9,7 +9,7 @@ import { Nav } from "./components/Nav";
 export default function JobSeekerScreen() {
   return (
     <React.Fragment>
-      <Navigation />
+      <Nav />
         <Routes>
           <Route path="/" element={<Navigate replace to="/dashboard" />} />
 

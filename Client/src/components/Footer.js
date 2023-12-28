@@ -2,7 +2,7 @@ export const Footer = () => {
     return (
       <div className="bg-gray-900">
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-          <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
+          {/* <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
             <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
               <div>
                 <p className="font-medium tracking-wide text-gray-300">
@@ -196,8 +196,9 @@ export const Footer = () => {
                 spare ribs salami.
               </p>
             </div>
-          </div>
-          <div className="flex flex-col justify-between pt-5 pb-10 border-t border-gray-800 sm:flex-row">
+          </div> */}
+          {/* use this in below class later "border-t" */}
+          <div className="flex flex-col justify-between pt-1 pb-10 border-gray-800 sm:flex-row">
             <p className="text-sm text-gray-500">
               © Copyright 2023 Team9. All rights reserved.
             </p>

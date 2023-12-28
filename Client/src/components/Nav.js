@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-bootstrap";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,16 +12,25 @@ export const Nav = () => {
   const authToken = localStorage.getItem("token");
 
   const TokenNav = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const authToken = localStorage.getItem("token");
+    const redAuthToken = jwtDecode(authToken);
+
+    const logoutHandler = () => {
+      dispatch({ type: "CLEARAUTHTOKEN" });
+      navigate("/", { replace: true });
+    };
+
     return (
-      
       <ul className="flex items-center ml-auto space-x-8 lg:flex">
         <li>
           <div className="max-sm:hidden font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
             <div className="group relative cursor-pointer py-2">
               <div className="flex items-center justify-between">
                 <a className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-                  Logged In
-                </a>
+                  {redAuthToken.userName}                </a>
               </div>
               <div className="floating-hover-block invisible absolute z-50 flex w-40 flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-enabled:visible group-hover:visible">
                 <a
@@ -44,8 +53,12 @@ export const Nav = () => {
           <div className="max-sm:hidden inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none mx-auto w-full">
             <div className="group relative cursor-pointer py-2">
               <div className="flex items-center justify-between">
-                <a className="menu-hover my-2 py-2 text-base font-medium text-white lg:mx-1">
-                  Sign Up
+                <a
+                  onClick={logoutHandler}
+                  href="/login"
+                  className="menu-hover my-2 py-2 text-base font-medium text-white lg:mx-1"
+                >
+                  Log Out
                 </a>
               </div>
               <div className="floating-hover-block invisible absolute z-50 flex w-40 flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
@@ -203,7 +216,8 @@ export const Nav = () => {
           <div className="max-sm:hidden font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
             <div className="group relative cursor-pointer py-2">
               <div className="flex items-center justify-between">
-                <a className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+                
+                <a href="/login" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
                   Login
                 </a>
               </div>
@@ -228,7 +242,7 @@ export const Nav = () => {
           <div className="max-sm:hidden inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none mx-auto w-full">
             <div className="group relative cursor-pointer py-2">
               <div className="flex items-center justify-between">
-                <a className="menu-hover my-2 py-2 text-base font-medium text-white lg:mx-1">
+                <a href="/register" className="menu-hover my-2 py-2 text-base font-medium text-white lg:mx-1">
                   Sign Up
                 </a>
               </div>
@@ -382,21 +396,21 @@ export const Nav = () => {
 
   return (
     <>
-    <div className="bg-gray-900">
-      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-        <div className="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
-          <ul className="items-center hidden ml-20 space-x-8 lg:flex">
-            <li>
-              <a
-                href="/appliedJobs"
-                aria-label="Our product"
-                title="Our product"
-                className="font-medium tracking-wide text-gray-100 hover:text-teal-accent-400 hover:underline transition-all duration-200"
-              >
-                Applied Jobs
-              </a>
-            </li>
-            {/* <li>
+      <div className="bg-gray-900">
+        <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+          <div className="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
+            <ul className="items-center hidden ml-20 space-x-8 lg:flex">
+              {authToken && (<li>
+                <a
+                  href="/appliedJobs"
+                  aria-label="Our product"
+                  title="Our product"
+                  className="font-medium tracking-wide text-gray-100 hover:text-teal-accent-400 hover:underline transition-all duration-200"
+                >
+                  Applied Jobs
+                </a>
+              </li>)}
+              {/* <li>
               <a
                 href="/"
                 aria-label="Our product"
@@ -416,41 +430,37 @@ export const Nav = () => {
                 Pricing
               </a>
             </li> */}
-          </ul>
-          <a
-            href="/"
-            aria-label="Company"
-            title="Company"
-            className="inline-flex items-center lg:mx-auto"
-          >
-            <svg
-              className="w-8 text-teal-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
+            </ul>
+            <a
+              href="/"
+              aria-label="Company"
+              title="Company"
+              className="inline-flex items-center lg:mx-auto"
             >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-              Job Portal
-            </span>
-          </a>
-          {authToken &&
-            (<TokenNav />)
-          }
-          {!authToken &&
-            (<WithoutTokenNav />)
-          }
+              <svg
+                className="w-8 text-teal-accent-400"
+                viewBox="0 0 24 24"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeMiterlimit="10"
+                stroke="currentColor"
+                fill="none"
+              >
+                <rect x="3" y="1" width="7" height="12" />
+                <rect x="3" y="17" width="7" height="6" />
+                <rect x="14" y="1" width="7" height="6" />
+                <rect x="14" y="11" width="7" height="12" />
+              </svg>
+              <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+                Job Portal
+              </span>
+            </a>
+            {authToken && <TokenNav />}
+            {!authToken && <WithoutTokenNav />}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

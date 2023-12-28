@@ -11,6 +11,7 @@ router.post(
   "/register",
   [
     body("name").trim().not().isEmpty(),
+    body("address").trim().not().isEmpty(),
     body("email")
       .isEmail()
       .custom((value, { req }) => {
@@ -22,7 +23,7 @@ router.post(
       })
       .normalizeEmail(),
     body("password").trim().isLength({ min: 6, max: 12 }),
-    body("age").isInt({ min: 18, max: 60 }),
+    body("dob").trim().not().isEmpty(),
     body("mobile")
       .trim()
       .custom((value, { req }) => {
