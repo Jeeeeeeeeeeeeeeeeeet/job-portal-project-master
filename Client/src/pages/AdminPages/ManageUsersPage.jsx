@@ -137,7 +137,7 @@ const ManageUsersPage = () => {
             <SpinnerComponent />
           </Container>
         )}
-        <ReactModal
+        {/* <ReactModal
           show={showAddUserModal}
           onHide={() => {
             setAddUserModal(false);
@@ -152,7 +152,7 @@ const ManageUsersPage = () => {
               <FormikForm edit={true} inititalValue onAdd={addUserHandler} />
             ),
           }}
-        </ReactModal>
+        </ReactModal> */}
         <ReactModal
           show={showEditUserModal.show}
           onHide={() => {

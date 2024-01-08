@@ -51,14 +51,14 @@ const Jobs = () => {
     <>
       <div>
         <div
-          className="h-screen"
+          className="h-96"
           style={{
             backgroundImage: `url(https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg)`,
             backgroundSize: `cover`,
           }}
         >
           <div className="text-center text-base mx-24 max-sm:mx-2">
-            <div className="bg-white bg-opacity-10 absolute top-1/2 w-10/12 rounded-full my-2">
+            <div className="bg-white bg-opacity-10 absolute top-1/4 w-10/12 rounded-full my-2">
               <IoSearch className="relative text-white top-10 ml-10 h-16 w-16" />
               <input
                 type="text"

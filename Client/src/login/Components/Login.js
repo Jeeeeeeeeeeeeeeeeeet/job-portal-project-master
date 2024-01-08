@@ -105,7 +105,7 @@ const Login = () => {
         <div className="w-full bg-gray-100 flex items-center justify-center">
           <div className="max-w-md w-full p-6">
             <h1 className="text-3xl font-semibold mb-6 text-black text-center">
-              Login as Job Seeker
+              Login
             </h1>
             <h1 className="text-sm font-semibold mb-6 text-gray-500 text-center">
               Join to Our Community with all time access and free{" "}

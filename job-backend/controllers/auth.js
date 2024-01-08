@@ -67,6 +67,7 @@ exports.login = (req, res, next) => {
           userId: loadedUser._id.toString(),
           userName: loadedUser.name,
           role: loadedUser.role,
+          email: loadedUser.email,
         },
         "thisistooconfidential",
         { expiresIn: "1h" }

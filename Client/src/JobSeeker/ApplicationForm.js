@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import classes from "./Modalf.module.css";
 import axios from "axios";
@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Config from "../config/Config.json";
 import SpinnerComponent from "../components/UI/SpinnerComponent";
+import { useSelector } from "react-redux";
+import jwtDecode from "jwt-decode";
 
 toast.configure();
 
@@ -15,6 +17,10 @@ function Register(props) {
   const [errors, setErrors] = useState({});
   const [showSpinner, setSpinner] = useState(false);
   // console.log(props.job);
+  const selectauthToken = (rootstate) => rootstate.authToken;
+
+  const authToken = localStorage.getItem("token");
+  const redAuthToken = jwtDecode(authToken);
 
   const handleChange = (event) => {
     setinputs((values) => {
@@ -30,6 +36,7 @@ function Register(props) {
       };
     });
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -80,6 +87,10 @@ function Register(props) {
         });
     }
   };
+
+  useEffect(() => {
+    console.log(redAuthToken)
+  }, []);
 
   const validate = () => {
     let isValid = true;
@@ -138,7 +149,6 @@ function Register(props) {
                         className="form-control"
                         type="text"
                         value={props.job.title}
-                        aria-label="Disabled input example"
                         disabled
                       />
                     </div>
@@ -149,7 +159,8 @@ function Register(props) {
                         </span>
                         <Form.Control
                           type="text"
-                          placeholder="Enter name"
+                          value={redAuthToken.userName}
+                          disabled
                           name="name"
                           onChange={handleChange}
                         />
@@ -167,7 +178,9 @@ function Register(props) {
                         <Form.Control
                           type="email"
                           placeholder="Enter email"
+                          value={redAuthToken.email}
                           name="email"
+                          disabled
                           onChange={handleChange}
                         />
                         {errors.email ? (

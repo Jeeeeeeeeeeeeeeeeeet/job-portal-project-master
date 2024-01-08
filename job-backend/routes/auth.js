@@ -3,7 +3,6 @@ const { body } = require("express-validator");
 
 const authController = require("../controllers/auth");
 const User = require("../models/user");
-const job = require("../models/job");
 
 const router = express.Router();
 
@@ -11,7 +10,6 @@ router.post(
   "/register",
   [
     body("name").trim().not().isEmpty(),
-    body("address").trim().not().isEmpty(),
     body("email")
       .isEmail()
       .custom((value, { req }) => {
@@ -23,7 +21,7 @@ router.post(
       })
       .normalizeEmail(),
     body("password").trim().isLength({ min: 6, max: 12 }),
-    body("dob").trim().not().isEmpty(),
+    body("age").isInt({ min: 18, max: 60 }),
     body("mobile")
       .trim()
       .custom((value, { req }) => {

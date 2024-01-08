@@ -23,7 +23,7 @@ const Navigation = () => {
       fixed="top"
       variant="dark"
       expand="md"
-      bg="primary"
+      bg="dark"
       className={classes.nav}
     >
       <Container fluid>
@@ -33,10 +33,7 @@ const Navigation = () => {
           className={classes.brand}
           to="/dashboard"
         >
-          <span className={classes.logo}>
-            <i className="bi bi-search"></i>
-          </span>
-          Job Hunt
+          Job Portal
         </NavLink>
         <Navbar.Toggle aria-controls="navbar-dark-example" />
         <Navbar.Collapse id="navbar-dark-example">

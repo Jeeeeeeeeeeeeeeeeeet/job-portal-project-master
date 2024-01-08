@@ -10,10 +10,10 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-const userName = "praveenterax";
-const password = "NblCRcF6hjo1BC3s";
+const userName = "jeetpardeshi92";
+const password = "newpassword123mongo";
 
-const MONGO_URI = `mongodb+srv://jeetpardeshi92:EL8e5KyGF30l8YDN@users.shf0voo.mongodb.net/`;
+const MONGO_URI = `mongodb+srv://rapanchalk:rapanchalk@cluster0.isp47ql.mongodb.net/`;
 
 app.use(bodyParser.json());
 

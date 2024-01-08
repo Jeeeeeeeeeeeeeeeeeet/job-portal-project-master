@@ -16,6 +16,7 @@ import {
   TextInput,
 } from "../../components/dashboard/ManageUsers/AddUsersFormik/fields/FieldInputs";
 import SpinnerComponent from "../../components/UI/SpinnerComponent";
+import { Nav } from "../../components/Nav";
 
 const Register = (props) => {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -67,7 +68,7 @@ const Register = (props) => {
   // const history = useHistory();
   return (
     <React.Fragment>
-      <Header />
+      <Nav />
       <Container>
         <h1 className="p-3 text-center rounded" style={{ color: "#2c49ed" }}>
           Register
@@ -223,14 +224,14 @@ const Register = (props) => {
                         <option value="Job Provider">Job Provider</option>
                       </SelectInput>
                     </div>
-                    <Button variant="success" type="submit" className="mt-4 ">
+                    <Button variant="success" type="submit" className="text-black mt-4 ">
                       Register
                     </Button>
                     <Link to="/Login">
                       <Button
                         variant="primary"
                         type="submit"
-                        className="mt-4 float-end"
+                        className="text-black mt-4 float-end"
                         style={{ marginLeft: "10px" }}
                       >
                         Back to Login

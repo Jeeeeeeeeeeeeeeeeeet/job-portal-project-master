@@ -16,12 +16,11 @@ function Jobitem({ item, jobApply }) {
             />
           </div>
 
-          <div className="text-bold">{item.title}</div>
+          <div className="text-bold">Job Title : {item.title}</div>
 
-          <div className="text-justify">{item.description}</div>
-          <div className="text-justify">{item.category}</div>
-          <div className="text-justify">{item.startDate}</div>
-          <div className="text-justify">{item.startDate}</div>
+          <div className="text-justify">Job Description : {item.description}</div>
+          <div className="text-justify">Job Category : {item.category}</div>
+          <div className="text-justify">Applicant can apply upto {item.endDate}</div>
           {!item.status && (
             <button name="jobclick"
               onClick={() => {

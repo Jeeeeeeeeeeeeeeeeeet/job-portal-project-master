@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import Register from "./login/Components/RegisterYupCopy1";
+import Register from "./login/Components/RegisterYup";
 import ForgotPassword from "./login/Components/ForgotPassword";
 import Mdashboard from "./login/Components/Mdashboard";
 import Blank from "./components/Blank";
@@ -24,7 +24,7 @@ function App() {
 
       <Route path="/Register" element={<Register />} />
     </Routes>
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 }
